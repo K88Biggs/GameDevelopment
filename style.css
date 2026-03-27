@@ -1,0 +1,454 @@
+/* SECTION: Design Tokens */
+:root {
+  /* Colors */
+  --color-bg: #fff9f5;
+  --color-bg-soft: #ffece0;
+  --color-surface: #ffffff;
+  --color-surface-soft: #fff3e8;
+  --color-border-subtle: #f3d8c4;
+  --color-text: #3f2a25;
+  --color-text-soft: #6b4b3e;
+  --color-muted: #b19386;
+  --color-accent: #ff9b73;
+  --color-accent-soft: #ffe1cf;
+  --color-accent-strong: #ff7b5c;
+  --color-focus: rgba(255, 155, 115, 0.55);
+  --color-success: #4caf50;
+  --color-error: #d9376e;
+
+  /* Semantic tokens */
+  --app-bg: var(--color-bg);
+  --app-surface: var(--color-surface);
+  --app-surface-soft: var(--color-surface-soft);
+  --app-border: var(--color-border-subtle);
+  --app-text-main: var(--color-text);
+  --app-text-soft: var(--color-text-soft);
+  --app-muted: var(--color-muted);
+  --app-accent: var(--color-accent);
+  --app-accent-soft: var(--color-accent-soft);
+  --app-accent-strong: var(--color-accent-strong);
+
+  /* Typography */
+  --font-family-main: "Baloo 2", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.6rem;
+  --font-size-xxl: 2.1rem;
+
+  /* Spacing */
+  --space-2: 4px;
+  --space-3: 8px;
+  --space-4: 12px;
+  --space-5: 16px;
+  --space-6: 24px;
+  --space-7: 32px;
+  --space-8: 48px;
+
+  /* Radii */
+  --radius-sm: 10px;
+  --radius-md: 18px;
+  --radius-lg: 24px;
+  --radius-pill: 999px;
+
+  /* Shadows */
+  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
+  --shadow-soft-lg: 0 18px 40px rgba(0, 0, 0, 0.08);
+
+  /* Transitions */
+  --transition-fast: 0.15s ease-out;
+  --transition-med: 0.22s ease-out;
+}
+
+/* SECTION: Global Styles */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body.theme-soft-pastel {
+  min-height: 100vh;
+  font-family: var(--font-family-main);
+  color: var(--app-text-main);
+  background: radial-gradient(circle at top left, #ffe3d1 0, #fff9f5 40%, #ffe8f0 100%);
+}
+
+.app {
+  position: relative;
+  max-width: 880px;
+  margin: 0 auto;
+  padding: var(--space-7) var(--space-5) var(--space-7);
+}
+
+.bg-decor {
+  position: fixed;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.45;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.bg-decor--one {
+  background: #ffd1b8;
+  top: -80px;
+  left: -40px;
+}
+
+.bg-decor--two {
+  background: #ffc1df;
+  bottom: -80px;
+  right: -40px;
+}
+
+/* SECTION: Header */
+.app__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  margin-bottom: var(--space-7);
+}
+
+.app__title-wrap {
+  background: var(--app-surface);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  box-shadow: var(--shadow-soft-lg);
+  border: 1px solid var(--app-border);
+}
+
+.app__title {
+  margin: 0 0 var(--space-3);
+  font-size: var(--font-size-xxl);
+  letter-spacing: -0.03em;
+  color: var(--app-text-main);
+}
+
+.app__subtitle {
+  margin: 0;
+  font-size: var(--font-size-md);
+  color: var(--app-text-soft);
+}
+
+.app__status {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+}
+
+.status-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  border-radius: var(--radius-pill);
+  background: var(--app-accent-soft);
+  color: var(--app-text-main);
+  font-size: var(--font-size-sm);
+  border: 1px solid var(--app-accent);
+}
+
+.status-chip--soft {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: var(--app-border);
+}
+
+/* SECTION: Game Layout */
+.game {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+  gap: var(--space-6);
+  align-items: flex-start;
+}
+
+.game__column {
+  background: rgba(255, 255, 255, 0.86);
+  border-radius: var(--radius-lg);
+  padding: var(--space-5);
+  box-shadow: var(--shadow-soft);
+  border: 1px solid var(--app-border);
+}
+
+.game__column--animals {
+  position: relative;
+}
+
+.game__column--foods {
+  background: var(--app-surface-soft);
+}
+
+.column-title {
+  margin: 0 0 var(--space-3);
+  font-size: var(--font-size-lg);
+  letter-spacing: -0.02em;
+}
+
+.column-help {
+  margin: 0 0 var(--space-4);
+  font-size: var(--font-size-sm);
+  color: var(--app-muted);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--space-4);
+}
+
+.card-grid--foods {
+  grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+}
+
+/* SECTION: Cards */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 10px 10px;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  background: linear-gradient(145deg, #ffffff, #fff4eb);
+  box-shadow: 0 8px 0 rgba(0, 0, 0, 0.05);
+  transform: translateY(0);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+    border-color var(--transition-fast), background var(--transition-fast);
+  cursor: pointer;
+}
+
+.card--animal {
+  min-height: 120px;
+}
+
+.card--food {
+  min-height: 92px;
+}
+
+.card__emoji {
+  font-size: 2.1rem;
+  margin-bottom: var(--space-3);
+}
+
+.card__label {
+  font-size: var(--font-size-sm);
+  color: var(--app-text-main);
+}
+
+.card__slot {
+  width: 32px;
+  height: 6px;
+  margin-top: var(--space-3);
+  border-radius: var(--radius-pill);
+  background: var(--app-accent-soft);
+}
+
+.card--food .card__slot {
+  display: none;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 0 rgba(0, 0, 0, 0.06);
+}
+
+.card:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.04);
+}
+
+.card--disabled {
+  opacity: 0.4;
+  cursor: default;
+  box-shadow: 0 4px 0 rgba(0, 0, 0, 0.03);
+}
+
+.card--match-correct {
+  border-color: var(--color-success);
+  background: linear-gradient(145deg, #ffffff, #e6f8ea);
+}
+
+.card--match-incorrect {
+  border-color: var(--color-error);
+  background: linear-gradient(145deg, #ffffff, #ffe6ef);
+}
+
+.card--selected {
+  border-color: var(--app-accent-strong);
+  box-shadow: 0 0 0 3px rgba(255, 155, 115, 0.35), 0 8px 0 rgba(0, 0, 0, 0.06);
+}
+
+/* SECTION: Drag & Drop States */
+.shake-soft {
+  animation: shake-soft 0.5s ease;
+}
+
+@keyframes shake-soft {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-3px);
+  }
+  75% {
+    transform: translateX(3px);
+  }
+}
+
+.sortable-ghost {
+  opacity: 0.4;
+  transform: scale(0.96);
+}
+
+.sortable-chosen {
+  transform: scale(1.02) translateY(-1px);
+}
+
+/* SECTION: Controls & Feedback */
+.controls {
+  margin-top: var(--space-7);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.controls__main {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 120px;
+  min-height: 44px;
+  padding: 0 var(--space-5);
+  border-radius: var(--radius-pill);
+  border: 0;
+  font-family: var(--font-family-main);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+    background var(--transition-fast), color var(--transition-fast);
+}
+
+.btn--primary {
+  background: linear-gradient(135deg, var(--app-accent), var(--app-accent-strong));
+  color: #3b1810;
+  box-shadow: 0 10px 0 rgba(191, 106, 74, 0.5);
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 0 rgba(191, 106, 74, 0.55);
+}
+
+.btn--primary:active {
+  transform: translateY(1px);
+  box-shadow: 0 6px 0 rgba(191, 106, 74, 0.45);
+}
+
+.btn--ghost {
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--app-text-main);
+  border: 1px solid var(--app-border);
+  box-shadow: 0 8px 0 rgba(204, 173, 152, 0.4);
+}
+
+.btn--ghost:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 0 rgba(204, 173, 152, 0.45);
+}
+
+.btn--ghost:active {
+  transform: translateY(1px);
+  box-shadow: 0 5px 0 rgba(204, 173, 152, 0.4);
+}
+
+.btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-focus);
+}
+
+.btn[disabled] {
+  opacity: 0.6;
+  cursor: default;
+  box-shadow: none;
+}
+
+.controls__message {
+  min-height: 1.4em;
+  margin: 0;
+  font-size: var(--font-size-md);
+  color: var(--app-text-soft);
+}
+
+.controls__message--soft {
+  color: var(--app-muted);
+}
+
+.controls__message--success {
+  color: var(--color-success);
+}
+
+.controls__message--error {
+  color: var(--color-error);
+}
+
+/* SECTION: Accessibility */
+.card:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-focus), 0 8px 0 rgba(0, 0, 0, 0.05);
+}
+
+/* SECTION: Responsive */
+@media (max-width: 768px) {
+  .app {
+    padding-inline: var(--space-4);
+    padding-top: var(--space-6);
+  }
+
+  .app__title-wrap {
+    padding: var(--space-5);
+  }
+
+  .app__title {
+    font-size: 1.8rem;
+  }
+
+  .game {
+    grid-template-columns: 1fr;
+  }
+
+  .game__column--foods {
+    order: -1;
+  }
+}
+
+@media (max-width: 480px) {
+  .card-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .card-grid--foods {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .app__subtitle {
+    font-size: var(--font-size-sm);
+  }
+}

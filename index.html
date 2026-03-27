@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- SECTION: Meta & Title -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Animal Snack Match</title>
+
+    <!-- SECTION: Fonts -->
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- SECTION: Styles -->
+    <link href="style.css" rel="stylesheet" />
+  </head>
+  <body class="theme-soft-pastel">
+    <div class="bg-decor bg-decor--one"></div>
+    <div class="bg-decor bg-decor--two"></div>
+
+    <main class="app" aria-labelledby="game-title">
+      <!-- SECTION: Header -->
+      <header class="app__header">
+        <div class="app__title-wrap">
+          <h1 id="game-title" class="app__title">Animal Snack Match</h1>
+          <p class="app__subtitle">
+            Help each animal find the snack it loves. Tap and drag the food to the
+            matching animal.
+          </p>
+        </div>
+        <div class="app__status" aria-live="polite">
+          <div class="status-chip" id="roundLabel">Round 1</div>
+          <div class="status-chip status-chip--soft">
+            Matches: <span id="matchCount">0</span>/<span id="totalMatches">3</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- SECTION: Game Area -->
+      <section class="game" aria-label="Animal and food matching game">
+        <!-- Animals column -->
+        <section class="game__column game__column--animals" aria-label="Animals">
+          <h2 class="column-title">Animals</h2>
+          <div class="card-grid" id="animalGrid">
+            <!-- Example card structure; actual cards injected by JS -->
+            <!--
+            <button class="card card--animal" data-animal="rabbit">
+              <span class="card__emoji" aria-hidden="true">🐰</span>
+              <span class="card__label">Rabbit</span>
+              <span class="card__slot" aria-hidden="true"></span>
+            </button>
+            -->
+          </div>
+        </section>
+
+        <!-- Foods column -->
+        <section class="game__column game__column--foods" aria-label="Foods">
+          <h2 class="column-title">Snacks</h2>
+          <p class="column-help">Drag a snack to a matching animal. You can also tap to select, then tap an animal.</p>
+          <div class="card-grid card-grid--foods" id="foodGrid">
+            <!-- Food tiles injected by JS -->
+          </div>
+        </section>
+      </section>
+
+      <!-- SECTION: Controls & Feedback -->
+      <section class="controls" aria-label="Game controls and feedback">
+        <div class="controls__main">
+          <button class="btn btn--primary" id="nextRoundButton" type="button">
+            Next Round
+          </button>
+          <button class="btn btn--ghost" id="resetButton" type="button">
+            Start Over
+          </button>
+        </div>
+        <p class="controls__message" id="feedback" aria-live="polite"></p>
+      </section>
+    </main>
+
+    <!-- SECTION: Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.15.6/Sortable.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
